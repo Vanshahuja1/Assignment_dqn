@@ -1,0 +1,112 @@
+{
+    "AREA_WIDTH": 3000,
+    "AREA_HEIGHT": 3000,
+    "NUM_OPERATORS": 2,
+    "BS_DENSITY_PER_KM2": [
+        2.0,
+        2.0
+    ],
+    "BS_TYPE_RATIO": [
+        [
+            1,
+            0,
+            0,
+            0
+        ],
+        [
+            1,
+            0,
+            0,
+            0
+        ]
+    ],
+    "BS_TYPES": [
+        "MACRO",
+        "MICRO",
+        "PICO",
+        "FEMTO"
+    ],
+    "BS_TX_POWER_WATT": {
+        "MACRO": 20,
+        "MICRO": 5,
+        "PICO": 2,
+        "FEMTO": 0.1
+    },
+    "BS_HEIGHT": 50,
+    "UE_HEIGHT": 1.5,
+    "OPERATING_FREQUENCY": [
+        900,
+        1200
+    ],
+    "NOISE_POWER_DBM": -104,
+    "ASSOC_OWN_OPERATOR_ONLY": false,
+    "TOTAL_EDGE_SERVERS": 10,
+    "EDGE_SERVERS_PER_OPERATOR": [
+        5,
+        5
+    ],
+    "EDGE_PLACEMENT": "random",
+    "BS_TO_EDGE_MAPPING": "nearest_same_operator",
+    "DT": 1.0,
+    "NUM_SLOTS": 100,
+    "SERVICE_TYPES": [
+        "URLLC",
+        "eMBB",
+        "mMTC"
+    ],
+    "SERVICE_PI": [
+        0.1,
+        0.3,
+        0.6
+    ],
+    "SERVICE_RATES_KBPS": {
+        "URLLC": 64,
+        "eMBB": 500,
+        "mMTC": 1024
+    },
+    "SERVICE_LATENCY_REQ_MS": {
+        "URLLC": 20,
+        "eMBB": 500,
+        "mMTC": 1000
+    },
+    "SERVICE_CPU_COST_MC": {
+        "URLLC": 0.154,
+        "eMBB": 1.2,
+        "mMTC": 2.458
+    },
+    "USER_OPERATOR_RATIO": [
+        5,
+        5
+    ],
+    "P_SESSION_REQUEST": 0.05,
+    "V_F": 200000000.0,
+    "EDGE_CPU_BUDGET_MC": 500,
+    "EDGE_MEM_BUDGET_MB": 2048,
+    "M0_MB": 5.0,
+    "W1_THROUGHPUT": 1.0,
+    "W2_LATENCY": 2.0,
+    "W3_CPU_WASTE": 1.0,
+    "W4_MEM_VIO": 5.0,
+    "Q_MAX": 500,
+    "DQN_GAMMA": 0.99,
+    "DQN_LR": 0.001,
+    "DQN_BATCH_SIZE": 64,
+    "DQN_REPLAY_SIZE": 50000,
+    "DQN_MIN_REPLAY_TO_LEARN": 1000,
+    "DQN_TRAIN_EVERY": 8,
+    "DQN_TARGET_UPDATE_EVERY": 5000,
+    "DQN_EPS_START": 1.0,
+    "DQN_EPS_END": 0.05,
+    "DQN_EPS_DECAY_STEPS": 80000,
+    "DQN_GRAD_CLIP_NORM": 10.0,
+    "RANDOM_SEED": 42,
+    "REWARD_WV": 1.0,
+    "REWARD_WR": 1.0,
+    "REWARD_ALPHA": 2.0,
+    "REWARD_GAMMA": 1.0,
+    "LV_NORM_SEC": 10.0,
+    "LR_NORM_SEC": 10.0,
+    "LOG_DIR": "logs",
+    "SAVE_SNAPSHOTS": true,
+    "METRICS_REPORT_INTERVAL": 10
+}

@@ -1,0 +1,121 @@
+{
+    "AREA_WIDTH": 3000,
+    "AREA_HEIGHT": 3000,
+    "NUM_OPERATORS": 2,
+    "BS_DENSITY_PER_KM2": [
+        2.0,
+        2.0
+    ],
+    "BS_TYPE_RATIO": [
+        [
+            1,
+            0,
+            0,
+            0
+        ],
+        [
+            1,
+            0,
+            0,
+            0
+        ]
+    ],
+    "BS_TYPES": [
+        "MACRO",
+        "MICRO",
+        "PICO",
+        "FEMTO"
+    ],
+    "BS_TX_POWER_WATT": {
+        "MACRO": 20,
+        "MICRO": 5,
+        "PICO": 2,
+        "FEMTO": 0.1
+    },
+    "BS_HEIGHT": 50,
+    "UE_HEIGHT": 1.5,
+    "OPERATING_FREQUENCY": [
+        900,
+        1200
+    ],
+    "NOISE_POWER_DBM": -104,
+    "ASSOC_OWN_OPERATOR_ONLY": false,
+    "TOTAL_EDGE_SERVERS": 10,
+    "EDGE_SERVERS_PER_OPERATOR": [
+        5,
+        5
+    ],
+    "EDGE_PLACEMENT": "random",
+    "BS_TO_EDGE_MAPPING": "nearest_same_operator",
+    "DT": 1.0,
+    "NUM_SLOTS": 100,
+    "DATA_RATES": [
+        128,
+        256,
+        512,
+        1024
+    ],
+    "DATA_RATE_RATIO": [
+        1,
+        2,
+        3,
+        4
+    ],
+    "USER_OPERATOR_RATIO": [
+        5,
+        5
+    ],
+    "P_SESSION_REQUEST": 0.05,
+    "BETA_GNB_EDGE_MS_PER_KM": 2.0,
+    "EDGE_CAP_SESSIONS": 250,
+    "CPU_IDLE_MC": 93,
+    "CPU_PER_SESSION_MC": 1.32,
+    "EDGE_CPU_BUDGET_MC": 330,
+    "MEM_PER_SESSION_MB": 5,
+    "EDGE_MEM_BUDGET_MB": 1280,
+    "CPU_AVG_PER_SESSION_MC": 1.32,
+    "_RAVG_DEN": 10,
+    "R_AVG_KBPS": 627.2,
+    "CPU_PER_SESSION_BY_RATE_MC": {
+        "128": 0.26938775510204077,
+        "256": 0.5387755102040815,
+        "512": 1.077551020408163,
+        "1024": 2.155102040816326
+    },
+    "M0_MB": 5,
+    "HOME_CPU_BUDGET_MC": 330,
+    "HOME_MEM_BUDGET_MB": 1280,
+    "ACTION_RHO": [
+        0.25,
+        0.5,
+        0.75,
+        1.0
+    ],
+    "ACTION_PI": [
+        0.3,
+        0.5,
+        0.7
+    ],
+    "NUM_ACTIONS": 48,
+    "DQN_GAMMA": 0.99,
+    "DQN_LR": 0.001,
+    "DQN_BATCH_SIZE": 64,
+    "DQN_REPLAY_SIZE": 50000,
+    "DQN_MIN_REPLAY_TO_LEARN": 1000,
+    "DQN_TRAIN_EVERY": 8,
+    "DQN_TARGET_UPDATE_EVERY": 5000,
+    "DQN_EPS_START": 1.0,
+    "DQN_EPS_END": 0.05,
+    "DQN_EPS_DECAY_STEPS": 80000,
+    "DQN_GRAD_CLIP_NORM": 10.0,
+    "RANDOM_SEED": 42,
+    "REWARD_WV": 1.0,
+    "REWARD_WR": 1.0,
+    "REWARD_ALPHA": 2.0,
+    "REWARD_GAMMA": 1.0,
+    "LV_NORM_SEC": 10.0,
+    "LR_NORM_SEC": 10.0,
+    "LOG_DIR": "logs",
+    "SAVE_SNAPSHOTS": true,
+    "METRICS_REPORT_INTERVAL": 10
+}
