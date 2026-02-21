@@ -9,8 +9,7 @@ A Deep Reinforcement Learning (DQN) based resource optimization system for multi
 | Milestone | Description | Status |
 | :--- | :--- | :--- |
 | **Milestone 1** | **Core DQN Implementation & Environment Engine** | ✅ **Completed** |
-| Milestone 2 | Baseline Comparison & Throughput Optimization | ⏳ Pending |
-| Milestone 3 | Advanced Multi-Agent Coordination & Scalability | ⏳ Pending |
+
 
 ---
 
