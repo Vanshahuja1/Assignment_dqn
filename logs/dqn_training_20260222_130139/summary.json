@@ -1,0 +1,28 @@
+{
+    "total_episodes": 5,
+    "latest_episode": {
+        "episode": 4,
+        "avg_reward": -1.4057758477139528,
+        "total_throughput": 4315132,
+        "latency_violation_rate": 0.5124076809453472,
+        "cpu_peak": 0.9932799999999996,
+        "loss": 0,
+        "epsilon": 0.99375
+    },
+    "averages": {
+        "avg_episode": 2.0,
+        "peak_episode": "4",
+        "avg_avg_reward": -1.4163550153196134,
+        "peak_avg_reward": -1.3718803265410402,
+        "avg_total_throughput": 4308160.8,
+        "peak_total_throughput": "4404280",
+        "avg_latency_violation_rate": 0.5169252231086183,
+        "peak_latency_violation_rate": 0.5409257898603967,
+        "avg_cpu_peak": 0.9522399999999995,
+        "peak_cpu_peak": 0.9932799999999996,
+        "avg_loss": 0.0,
+        "peak_loss": "0",
+        "avg_epsilon": 0.9962500000000001,
+        "peak_epsilon": 0.99875
+    }
+}

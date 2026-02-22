@@ -67,15 +67,16 @@ def train():
             
             # Aggregates for logging
             for e_id in slot_metrics:
-                ep_throughput += slot_metrics[e_id]["throughput"]
-                ep_latency_vio += slot_metrics[e_id]["latency_vio"]
-                ep_served += slot_metrics[e_id]["served_count"]
+                m = slot_metrics[e_id]
+                ep_throughput += sum(m[f"tp_{st}"] for st in params.SERVICE_TYPES)
+                ep_latency_vio += sum(m[f"vio_{st}"] for st in params.SERVICE_TYPES)
+                ep_served += m["served_count"]
                 ep_cpu_util.append(env.prev_cpu_utilization[e_id])
             
             # Incremental Slot Logging
             logger.log_slot(t, ep, {
                 "avg_reward": np.mean(list(rewards.values())),
-                "sys_throughput": sum(m["throughput"] for m in slot_metrics.values()),
+                "sys_throughput": sum(sum(m[f"tp_{st}"] for st in params.SERVICE_TYPES) for m in slot_metrics.values()),
                 "avg_cpu_util": np.mean(list(env.prev_cpu_utilization.values()))
             })
             

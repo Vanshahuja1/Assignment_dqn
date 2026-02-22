@@ -9,29 +9,27 @@ A Deep Reinforcement Learning (DQN) based resource optimization system for multi
 | Milestone | Description | Status |
 | :--- | :--- | :--- |
 | **Milestone 1** | **Core DQN Implementation & Environment Engine** | ✅ **Completed** |
-| Milestone 2 | Baseline Comparison & Throughput Optimization | ⏳ Pending |
-| Milestone 3 | Advanced Multi-Agent Coordination & Scalability | ⏳ Pending |
+| **Additinally** | **Scalability Analysis & Baseline Comparison** | ✅ **Completed** |
+
 
 ---
 
-## 🛠 What Has Been Done (Milestone 1)
+## 🛠 What Has Been Done
 
-In this milestone, we have transitioned the project from a static topology to a functional Reinforcement Learning environment.
+### Milestone 1: Core Engine & AI Foundation
+- **Mathematical Alignment (PDF Specs)**: Implemented the exact 6-queue FIFO dynamics and **Equation 19** queue growth models.
+- **252-Action Space**: Integrated the quantized simplex CPU-splitting constraints ($\Delta = 0.2$).
+- **DQN Architecture**: Developed a multi-agent system where independent DQN controllers (PyTorch) optimize specific edge UPFs.
+- **PSA logic**: Fully implemented Proximal Service Association based on **SINR** attachment to BS.
 
-### 1. Mathematical Alignment (PDF Specs)
-- **Six-Queue Dynamics**: Implemented three local (backlogged) and three roaming (current-slot) FIFO queues per edge UPF.
-- **Serve-or-Forward Rule**: Integrated logic to backlog unserved local sessions and immediately forward unserved roaming sessions to Home UPFs.
-- **252-Action Space**: Implemented the quantized simplex constraint ($\Delta = 0.2$), allowing the agent to choose from 252 valid CPU-split vectors.
-
-### 2. DQN Agent Implementation
-- Multi-agent per-edge training using PyTorch.
-- **State Representation**: 7-dimensional normalized vector (6 queues + 1 previous CPU utilization).
-- **Reward Function**: Multi-objective function balancing throughput, latency penalties, CPU waste, and memory violations.
-
-### 3. Professional Logging & Reproducibility
-- **Metrics Layer**: Automated CSV/JSON logging of per-slot and per-episode performance.
-- **Automated Plotting**: Visual generation of Reward, Throughput, and Latency curves.
-- **Config Snapshots**: Automatic versioning of parameters for every simulation run.
+### Additinally: Scalability & Stress Testing
+- **Multi-User Load Testing**: Built a simulation engine to evaluate performance across variable user densities: **140, 500, 1000, and 2000 users**.
+- **Granular KPI Tracking**: 
+    - Operator-specific Throughput (Operator A vs Operator B).
+    - Service-wise Throughput (URLLC vs eMBB vs mMTC).
+    - Latency Violation Rates (Eq. 51 alignment).
+- **Baseline Comparison (Baseline-2)**: Implemented the Heuristic Proportional Allocation logic to serve as a benchmark against the DQN strategy.
+- **Congestion Stress Scenarios**: Tuned arrival rates ($P=0.15$) and CPU budgets to simulate high-congestion environments and validate priority learning.
 
 ---
 
@@ -39,40 +37,45 @@ In this milestone, we have transitioned the project from a static topology to a 
 
 | File | Description |
 | :--- | :--- |
-| `train_dqn.py` | Main entry point for training and simulation. |
-| `modules/environment.py` | The "Physics Engine" (Queue dynamics, Latency model, Eq. 19). |
-| `modules/dqn_agent.py` | PyTorch DQN implementation with Replay Buffer. |
-| `modules/actions.py` | Generator for the 252 discrete CPU-split actions. |
-| `modules/logger.py` | High-performance metrics recorder and snapshot utility. |
-| `AUDIT_REPORT.md` | Detailed technical audit of the code against project requirements. |
+| `train_dqn.py` | Primary training script for the DQN agents. |
+| `run_load_test.py` | Load-testing script for scalability analysis across user counts. |
+| `compare_results.py` | Side-by-side comparison script for Baseline vs DQN performance. |
+| `modules/environment.py` | Core engine handling Queueing, PSA Association, and Latency modeling. |
+| `modules/dqn_agent.py` | AI Logic (DQN, Replay Buffer, Epsilon-greedy exploration). |
+| `README.md` | Project summary and execution guide. |
 
 ---
 
 ## 🚀 How to Run and Test
 
 ### 1. Installation
-Ensure you have the required dependencies:
 ```bash
 pip install torch numpy matplotlib pandas
 ```
 
-### 2. Start Training
-Run the training script to see the agents learn in the edge environment:
+### 2. Generate Baseline Scaling Plots
+To see how the system performs under increasing user load using standard Heuristic logic:
+```bash
+python run_load_test.py
+```
+*Output: `logs/load_test_.../scalability_analysis.png`*
+
+### 3. Generate DQN vs Baseline Comparison
+To prove the superiority of the DQN in recovering URLLC throughput:
+```bash
+python compare_results.py
+```
+*Output: `dqn_vs_baseline_comparison.png`*
+
+### 4. Continuous Training
+To further train the AI agents on the latest environment settings:
 ```bash
 python train_dqn.py
 ```
 
-### 3. Review Results
-After execution, results are saved in the `logs/` directory with a unique timestamp:
-- **Plots**: View `training_performance.png` for a visual summary of the AI's progress.
-- **Metrics**: Open `episode_metrics.csv` for raw data on throughput and violations.
-- **Snapshots**: Check the `snapshots/` folder to see the exact settings used for that run.
-
 ---
 
-## 📈 Performance Monitoring
-The current implementation tracks:
-- **System Throughput (kbps)**
-- **Latency Violation Rate** (URLLC/eMBB/mMTC)
-- **CPU & Memory Utilization**
-- **Reward Convergence**
+## 📈 Key Metrics Explained
+- **Throughput (kbps)**: Total data successfully served per slot per operator.
+- **Violation Rate**: Percentage of sessions missing their latency requirement (e.g., >20ms for URLLC).
+- **CPU Utilization**: Average percentage of edge CPU capacity used across all queues.
